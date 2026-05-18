@@ -1,0 +1,9 @@
+node_modules/
+reports/
+reports/**
+playwright-report/
+npm-debug.log
+/.vscode/
+*.png
+*.log
+.env

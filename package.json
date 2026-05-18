@@ -1,0 +1,26 @@
+{
+  "name": "saucedemo-playwright-cucumber",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test:chrome": "cross-env BROWSER=chromium npx cucumber-js --parallel 2",
+    "test:firefox": "cross-env BROWSER=firefox npx cucumber-js --parallel 2",
+    "test": "npm run test:chrome",
+    "test:cucumber": "cucumber-js --tags \"@test\"",
+    "test:api": "cucumber-js --tags @api",
+    "test:ui": "cross-env BROWSER=chromium npx cucumber-js --tags 'not @api'",
+    "test:parallel": "concurrently \"cross-env BROWSER=chromium npm run test:cucumber --silent\" \"cross-env BROWSER=firefox npm run test:cucumber --silent\"",
+    "report": "node report/generate-report.js",
+    "postinstall": "npx playwright install"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^8.1.0",
+    "playwright": "^1.35.0",
+    "dotenv": "^16.1.4",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "multiple-cucumber-html-reporter": "^1.18.0",
+    "concurrently": "^7.6.0"
+  }
+}
